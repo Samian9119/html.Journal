@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 Pro Trading Journal with Chart Screenshots</title>
+    <style>
+        :root {
+            --bg-color: #0b0f19;
+            --card-bg: #111827;
+            --border-color: #1f2937;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --accent-green: #10b981;
+            --accent-red: #ef4444;
+            --accent-blue: #3b82f6;
+            --accent-yellow: #f59e0b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            padding: 20px;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 15px;
+        }
+
+        header h1 {
+            color: var(--accent-blue);
+            font-size: 2.2rem;
+            margin-bottom: 5px;
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Rules Banner */
+        .rules-banner {
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            border-left: 4px solid var(--accent-yellow);
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            font-size: 0.9rem;
+        }
+
+        .rules-banner h3 {
+            color: var(--accent-yellow);
+            margin-bottom: 8px;
+        }
+
+        .rules-banner ul {
+            margin-left: 20px;
+            color: var(--text-muted);
+        }
+
+        .rules-banner span {
+            color: var(--text-main);
+            font-weight: bold;
+        }
+
+        /* Month Section Styling */
+        .month-heading {
+            color: var(--accent-yellow);
+            font-size: 1.6rem;
+            margin: 40px 0 20px 0;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Day Card */
+        .day-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .day-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .day-header h2 {
+            font-size: 1.3rem;
+            color: var(--accent-blue);
+        }
+
+        /* Trade Slot */
+        .trade-slot {
+            background: rgba(17, 24, 39, 0.6);
+            border: 1px dashed var(--border-color);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .trade-slot h4 {
+            color: var(--accent-yellow);
+            margin-bottom: 12px;
+            font-size: 1.05rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 5px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 10px;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        label {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        input[type="text"],
+        select,
+        textarea {
+            width: 100%;
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 8px 12px;
+            color: var(--text-main);
+            font-size: 0.9rem;
+        }
+
+        input[type="file"] {
+            width: 100%;
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 6px 10px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        textarea {
+            resize: vertical;
+            height: 70px;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+        }
+
+        /* Spaced out checkboxes */
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            background: var(--bg-color);
+            padding: 12px;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+        }
+
+        .checkbox-group label {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: var(--text-main);
+            font-weight: normal;
+            cursor: pointer;
+            margin-bottom: 0;
+        }
+
+        .save-banner {
+            text-align: center;
+            padding: 20px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border-color);
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>2026 Pro Trading Journal</h1>
+        <p>Execution Strategy: 3 Trades Per Day | Sep 10 – Dec 31, 2026 (Excluding Weekends)</p>
+    </header>
+
+    <!-- Core Rules Banner -->
+    <div class="rules-banner">
+        <h3>📌 Core Execution Rules (N/B)</h3>
+        <ul>
+            <li><span>Liquidity Zones:</span> Always mark Sell Zone and Buy Zone at liquidity. Only take trade when market touches them.</li>
+            <li><span>Confirmation Map:</span> Monthly ➔ Daily | Weekly ➔ 4 Hour | Daily ➔ 1 Hour | 4 Hour ➔ 15 Minutes | 1 Hour ➔ 5 Minutes | 15 Minutes ➔ 1 Minute</li>
+        </ul>
+    </div>
+
+    <div id="journal-container"></div>
+</div>
+
+<script>
+    function generateJournal() {
+        const container = document.getElementById('journal-container');
+        
+        // Start date: September 10, 2026 (Tomorrow)
+        let currentDate = new Date(2026, 8, 10); 
+        const endDate = new Date(2026, 11, 31); // December 31, 2026
+
+        let currentMonthName = "";
+
+        while (currentDate <= endDate) {
+            let dayOfWeek = currentDate.getDay();
+            
+            // Exclude Saturday (6) and Sunday (0)
+            if (dayOfWeek !== 0 && dayOfWeek !== 6) {
+                let monthName = currentDate.toLocaleString('default', { month: 'long', year: 'numeric' });
+                
+                if (monthName !== currentMonthName) {
+                    currentMonthName = monthName;
+                    let monthHeading = document.createElement('h2');
+                    monthHeading.className = 'month-heading';
+                    monthHeading.textContent = currentMonthName;
+                    container.appendChild(monthHeading);
+                }
+
+                let year = currentDate.getFullYear();
+                let month = String(currentDate.getMonth() + 1).padStart(2, '0');
+                let day = String(currentDate.getDate()).padStart(2, '0');
+                let formattedDate = `${year}-${month}-${day} (${currentDate.toLocaleString('default', { weekday: 'short' })})`;
+
+                let dayCard = document.createElement('div');
+                dayCard.className = 'day-card';
+                
+                let dayHeaderHTML = `
+                    <div class="day-header">
+                        <h2>Date: ${formattedDate}</h2>
+                        <div>
+                            <label style="display:inline;">8. Pairs Traded: </label>
+                            <input type="text" placeholder="e.g., EURUSD" style="width: 180px; display:inline-block;">
+                        </div>
+                    </div>
+                `;
+
+                let tradesHTML = '';
+                for (let t = 1; t <= 3; t++) {
+                    tradesHTML += `
+                        <div class="trade-slot">
+                            <h4>7. Trade Number #${t}</h4>
+                            <div class="form-grid">
+                                
+                                <div class="form-group">
+                                    <label>9. News</label>
+                                    <input type="text" placeholder="High impact news / Session context">
+                                </div>
+                                <div class="form-group">
+                                    <label>12. Profit/Loss</label>
+                                    <input type="text" placeholder="+ $ / - pips">
+                                </div>
+                                <div class="form-group">
+                                    <label>13. Risk Reward Ratio (RRR)</label>
+                                    <input type="text" placeholder="e.g., 1:3">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>3. My BIAS</label>
+                                    <select>
+                                        <option value="">Select Bias</option>
+                                        <option>Bullish</option>
+                                        <option>Bearish</option>
+                                        <option>Neutral</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>2. Trend (Daily / 4H / 1H / 15 Min)</label>
+                                    <input type="text" placeholder="D: | 4H: | 1H: | 15m:">
+                                </div>
+
+                                <!-- Screenshot Fields Added -->
+                                <div class="form-group">
+                                    <label>📷 Chart Screenshot: BEFORE Trading</label>
+                                    <input type="file" accept="image/*">
+                                </div>
+                                <div class="form-group">
+                                    <label>📷 Chart Screenshot: AFTER Trading</label>
+                                    <input type="file" accept="image/*">
+                                </div>
+
+                                <div class="form-group full-width">
+                                    <label>1. My state of mind before, during and after trade.</label>
+                                    <textarea placeholder="Before: ... | During: ... | After: ..."></textarea>
+                                </div>
+
+                                <div class="form-group full-width">
+                                    <label>4. POINT OF INTEREST (POI)</label>
+                                    <div class="checkbox-group">
+                                        <label><input type="checkbox"> Order block</label>
+                                        <label><input type="checkbox"> F.V.G</label>
+                                        <label><input type="checkbox"> Sessions High</label>
+                                        <label><input type="checkbox"> Session Low</label>
+                                        <label><input type="checkbox"> Daily High</label>
+                                        <label><input type="checkbox"> Daily Low</label>
+                                        <label><input type="checkbox"> 4 Hour High</label>
+                                        <label><input type="checkbox"> 4 Hour Low</label>
+                                        <label><input type="checkbox"> 15 min structure</label>
+                                        <label><input type="checkbox"> 1 hour structure</label>
+                                        <label><input type="checkbox"> CHOCH (Body candle close)</label>
+                                        <label><input type="checkbox"> BOS (Body candle close)</label>
+                                    </div>
+                                </div>
+
+                                <div class="form-group full-width">
+                                    <label>5. Confirmation</label>
+                                    <div class="checkbox-group">
+                                        <label><input type="checkbox"> Counter trend</label>
+                                        <label><input type="checkbox"> Pro Trend</label>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>10. Conclusion</label>
+                                    <textarea placeholder="Trade results and summary..."></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label>11. Adjustment</label>
+                                    <textarea placeholder="Improvements for next execution..."></textarea>
+                                </div>
+
+                            </div>
+                        </div>
+                    `;
+                }
+
+                dayCard.innerHTML = dayHeaderHTML + tradesHTML;
+                container.appendChild(dayCard);
+            }
+
+            currentDate.setDate(currentDate.getDate() + 1);
+        }
+    }
+
+    window.onload = generateJournal;
+</script>
+
+<div class="save-banner">
+    <p>💡 Tip: You can type notes and upload image files directly into this journal in your browser. Use your browser's local setup to retain logs.</p>
+</div>
+
+</body>
+</html>
